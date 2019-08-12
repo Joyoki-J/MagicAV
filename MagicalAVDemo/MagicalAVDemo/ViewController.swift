@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  MagicalAVDemo
 //
-//  Created by 姜世祺 on 2019/8/12.
-//  Copyright © 2019 che168. All rights reserved.
+//  Created by Joyoki on 2019/8/12.
+//  Copyright © 2019 Joyoki. All rights reserved.
 //
 
 import UIKit
@@ -14,8 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let test = TestSwift()
-        print(test.str)
+        let test = AudioDevice()
+        print(test)
+        
         
     }
 

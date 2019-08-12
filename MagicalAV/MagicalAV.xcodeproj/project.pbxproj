@@ -7,13 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A1E28732301632F0001EC42 /* TestSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E28722301632F0001EC42 /* TestSwift.swift */; };
+		1FD8A0F02301AC0C00856C47 /* AudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD8A0EF2301AC0C00856C47 /* AudioDevice.swift */; };
+		1FD8A0F42301AC1B00856C47 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD8A0F22301AC1B00856C47 /* Metal.framework */; };
+		1FD8A0F52301AC1B00856C47 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD8A0F32301AC1B00856C47 /* MetalKit.framework */; };
+		1FD8A0F72301AC2A00856C47 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD8A0F62301AC2A00856C47 /* AVFoundation.framework */; };
+		1FD8A0F92301AD8900856C47 /* VideoDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD8A0F82301AD8900856C47 /* VideoDevice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FD8A0EF2301AC0C00856C47 /* AudioDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDevice.swift; sourceTree = "<group>"; };
+		1FD8A0F22301AC1B00856C47 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		1FD8A0F32301AC1B00856C47 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		1FD8A0F62301AC2A00856C47 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1FD8A0F82301AD8900856C47 /* VideoDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDevice.swift; sourceTree = "<group>"; };
 		5A1E28432301617F0001EC42 /* MagicalAV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MagicalAV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1E28472301617F0001EC42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A1E28722301632F0001EC42 /* TestSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSwift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,17 +29,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD8A0F72301AC2A00856C47 /* AVFoundation.framework in Frameworks */,
+				1FD8A0F42301AC1B00856C47 /* Metal.framework in Frameworks */,
+				1FD8A0F52301AC1B00856C47 /* MetalKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FD8A0E52301AAA300856C47 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A1E28472301617F0001EC42 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1FD8A0ED2301ABC800856C47 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				1FD8A0F82301AD8900856C47 /* VideoDevice.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		1FD8A0EE2301ABC800856C47 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				1FD8A0EF2301AC0C00856C47 /* AudioDevice.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		1FD8A0F12301AC1B00856C47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1FD8A0F62301AC2A00856C47 /* AVFoundation.framework */,
+				1FD8A0F22301AC1B00856C47 /* Metal.framework */,
+				1FD8A0F32301AC1B00856C47 /* MetalKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5A1E28392301617F0001EC42 = {
 			isa = PBXGroup;
 			children = (
 				5A1E28452301617F0001EC42 /* MagicalAV */,
 				5A1E28442301617F0001EC42 /* Products */,
+				1FD8A0F12301AC1B00856C47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -46,8 +92,9 @@
 		5A1E28452301617F0001EC42 /* MagicalAV */ = {
 			isa = PBXGroup;
 			children = (
-				5A1E28722301632F0001EC42 /* TestSwift.swift */,
-				5A1E28472301617F0001EC42 /* Info.plist */,
+				1FD8A0EE2301ABC800856C47 /* Audio */,
+				1FD8A0ED2301ABC800856C47 /* Video */,
+				1FD8A0E52301AAA300856C47 /* Supporting Files */,
 			);
 			path = MagicalAV;
 			sourceTree = "<group>";
@@ -130,7 +177,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A1E28732301632F0001EC42 /* TestSwift.swift in Sources */,
+				1FD8A0F02301AC0C00856C47 /* AudioDevice.swift in Sources */,
+				1FD8A0F92301AD8900856C47 /* VideoDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

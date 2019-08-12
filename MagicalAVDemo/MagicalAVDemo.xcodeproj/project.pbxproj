@@ -7,23 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FD8A0D72301A8FA00856C47 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD8A0D62301A8FA00856C47 /* Default-568h@2x.png */; };
+		1FD8A0E22301AA4C00856C47 /* MagicalAV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD8A0E12301AA4C00856C47 /* MagicalAV.framework */; };
+		1FD8A0E32301AA4C00856C47 /* MagicalAV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD8A0E12301AA4C00856C47 /* MagicalAV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5A1E285B230161BD0001EC42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E285A230161BD0001EC42 /* AppDelegate.swift */; };
 		5A1E285D230161BD0001EC42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E285C230161BD0001EC42 /* ViewController.swift */; };
 		5A1E2860230161BD0001EC42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A1E285E230161BD0001EC42 /* Main.storyboard */; };
 		5A1E2862230161BE0001EC42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A1E2861230161BE0001EC42 /* Assets.xcassets */; };
 		5A1E2865230161BE0001EC42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A1E2863230161BE0001EC42 /* LaunchScreen.storyboard */; };
-		5ABE63C723016AE000B1C9BB /* MagicalAV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABE63C623016AE000B1C9BB /* MagicalAV.framework */; };
-		5ABE63C823016AE000B1C9BB /* MagicalAV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABE63C623016AE000B1C9BB /* MagicalAV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5A1E286F230161F00001EC42 /* Embed Frameworks */ = {
+		1FD8A0E42301AA4D00856C47 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5ABE63C823016AE000B1C9BB /* MagicalAV.framework in Embed Frameworks */,
+				1FD8A0E32301AA4C00856C47 /* MagicalAV.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -31,6 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1FD8A0D62301A8FA00856C47 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1FD8A0E12301AA4C00856C47 /* MagicalAV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MagicalAV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1E2857230161BD0001EC42 /* MagicalAVDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicalAVDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1E285A230161BD0001EC42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A1E285C230161BD0001EC42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,7 +41,6 @@
 		5A1E2861230161BE0001EC42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A1E2864230161BE0001EC42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A1E2866230161BE0001EC42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5ABE63C623016AE000B1C9BB /* MagicalAV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MagicalAV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ABE63C723016AE000B1C9BB /* MagicalAV.framework in Frameworks */,
+				1FD8A0E22301AA4C00856C47 /* MagicalAV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +58,8 @@
 		5A1E284E230161BD0001EC42 = {
 			isa = PBXGroup;
 			children = (
-				5ABE63C623016AE000B1C9BB /* MagicalAV.framework */,
+				1FD8A0E12301AA4C00856C47 /* MagicalAV.framework */,
+				1FD8A0D62301A8FA00856C47 /* Default-568h@2x.png */,
 				5A1E2859230161BD0001EC42 /* MagicalAVDemo */,
 				5A1E2858230161BD0001EC42 /* Products */,
 			);
@@ -93,7 +96,7 @@
 				5A1E2853230161BD0001EC42 /* Sources */,
 				5A1E2854230161BD0001EC42 /* Frameworks */,
 				5A1E2855230161BD0001EC42 /* Resources */,
-				5A1E286F230161F00001EC42 /* Embed Frameworks */,
+				1FD8A0E42301AA4D00856C47 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A1E2865230161BE0001EC42 /* LaunchScreen.storyboard in Resources */,
+				1FD8A0D72301A8FA00856C47 /* Default-568h@2x.png in Resources */,
 				5A1E2862230161BE0001EC42 /* Assets.xcassets in Resources */,
 				5A1E2860230161BD0001EC42 /* Main.storyboard in Resources */,
 			);
