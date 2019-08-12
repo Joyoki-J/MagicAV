@@ -7,25 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1FD8A09223006F0500856C47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD8A09123006F0500856C47 /* AppDelegate.swift */; };
-		1FD8A09423006F0500856C47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD8A09323006F0500856C47 /* ViewController.swift */; };
-		1FD8A09723006F0500856C47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD8A09523006F0500856C47 /* Main.storyboard */; };
-		1FD8A09923006F0500856C47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FD8A09823006F0500856C47 /* Assets.xcassets */; };
-		1FD8A09C23006F0500856C47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD8A09A23006F0500856C47 /* LaunchScreen.storyboard */; };
+		5A1E28732301632F0001EC42 /* TestSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E28722301632F0001EC42 /* TestSwift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1FD8A08E23006F0500856C47 /* MagicalAV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicalAV.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FD8A09123006F0500856C47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1FD8A09323006F0500856C47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1FD8A09623006F0500856C47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1FD8A09823006F0500856C47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1FD8A09B23006F0500856C47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1FD8A09D23006F0500856C47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A1E28432301617F0001EC42 /* MagicalAV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MagicalAV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A1E28472301617F0001EC42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A1E28722301632F0001EC42 /* TestSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSwift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1FD8A08B23006F0500856C47 /* Frameworks */ = {
+		5A1E28402301617F0001EC42 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,45 +27,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1FD8A08523006F0500856C47 = {
+		5A1E28392301617F0001EC42 = {
 			isa = PBXGroup;
 			children = (
-				1FD8A09023006F0500856C47 /* MagicalAV */,
-				1FD8A08F23006F0500856C47 /* Products */,
+				5A1E28452301617F0001EC42 /* MagicalAV */,
+				5A1E28442301617F0001EC42 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1FD8A08F23006F0500856C47 /* Products */ = {
+		5A1E28442301617F0001EC42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1FD8A08E23006F0500856C47 /* MagicalAV.app */,
+				5A1E28432301617F0001EC42 /* MagicalAV.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1FD8A09023006F0500856C47 /* MagicalAV */ = {
+		5A1E28452301617F0001EC42 /* MagicalAV */ = {
 			isa = PBXGroup;
 			children = (
-				1FD8A09123006F0500856C47 /* AppDelegate.swift */,
-				1FD8A09323006F0500856C47 /* ViewController.swift */,
-				1FD8A09523006F0500856C47 /* Main.storyboard */,
-				1FD8A09823006F0500856C47 /* Assets.xcassets */,
-				1FD8A09A23006F0500856C47 /* LaunchScreen.storyboard */,
-				1FD8A09D23006F0500856C47 /* Info.plist */,
+				5A1E28722301632F0001EC42 /* TestSwift.swift */,
+				5A1E28472301617F0001EC42 /* Info.plist */,
 			);
 			path = MagicalAV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		5A1E283E2301617F0001EC42 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		1FD8A08D23006F0500856C47 /* MagicalAV */ = {
+		5A1E28422301617F0001EC42 /* MagicalAV */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1FD8A0A023006F0500856C47 /* Build configuration list for PBXNativeTarget "MagicalAV" */;
+			buildConfigurationList = 5A1E284B2301617F0001EC42 /* Build configuration list for PBXNativeTarget "MagicalAV" */;
 			buildPhases = (
-				1FD8A08A23006F0500856C47 /* Sources */,
-				1FD8A08B23006F0500856C47 /* Frameworks */,
-				1FD8A08C23006F0500856C47 /* Resources */,
+				5A1E283E2301617F0001EC42 /* Headers */,
+				5A1E283F2301617F0001EC42 /* Sources */,
+				5A1E28402301617F0001EC42 /* Frameworks */,
+				5A1E28412301617F0001EC42 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -81,88 +80,64 @@
 			);
 			name = MagicalAV;
 			productName = MagicalAV;
-			productReference = 1FD8A08E23006F0500856C47 /* MagicalAV.app */;
-			productType = "com.apple.product-type.application";
+			productReference = 5A1E28432301617F0001EC42 /* MagicalAV.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1FD8A08623006F0500856C47 /* Project object */ = {
+		5A1E283A2301617F0001EC42 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Joyoki;
 				TargetAttributes = {
-					1FD8A08D23006F0500856C47 = {
+					5A1E28422301617F0001EC42 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
-			buildConfigurationList = 1FD8A08923006F0500856C47 /* Build configuration list for PBXProject "MagicalAV" */;
+			buildConfigurationList = 5A1E283D2301617F0001EC42 /* Build configuration list for PBXProject "MagicalAV" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
-			mainGroup = 1FD8A08523006F0500856C47;
-			productRefGroup = 1FD8A08F23006F0500856C47 /* Products */;
+			mainGroup = 5A1E28392301617F0001EC42;
+			productRefGroup = 5A1E28442301617F0001EC42 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1FD8A08D23006F0500856C47 /* MagicalAV */,
+				5A1E28422301617F0001EC42 /* MagicalAV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1FD8A08C23006F0500856C47 /* Resources */ = {
+		5A1E28412301617F0001EC42 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FD8A09C23006F0500856C47 /* LaunchScreen.storyboard in Resources */,
-				1FD8A09923006F0500856C47 /* Assets.xcassets in Resources */,
-				1FD8A09723006F0500856C47 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1FD8A08A23006F0500856C47 /* Sources */ = {
+		5A1E283F2301617F0001EC42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FD8A09423006F0500856C47 /* ViewController.swift in Sources */,
-				1FD8A09223006F0500856C47 /* AppDelegate.swift in Sources */,
+				5A1E28732301632F0001EC42 /* TestSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		1FD8A09523006F0500856C47 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1FD8A09623006F0500856C47 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1FD8A09A23006F0500856C47 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1FD8A09B23006F0500856C47 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		1FD8A09E23006F0500856C47 /* Debug */ = {
+		5A1E28492301617F0001EC42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -196,6 +171,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -220,10 +196,12 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		1FD8A09F23006F0500856C47 /* Release */ = {
+		5A1E284A2301617F0001EC42 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -257,6 +235,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -275,40 +254,61 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		1FD8A0A123006F0500856C47 /* Debug */ = {
+		5A1E284C2301617F0001EC42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2AG95DX2G9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MagicalAV/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.joyoki.MagicalAV;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		1FD8A0A223006F0500856C47 /* Release */ = {
+		5A1E284D2301617F0001EC42 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2AG95DX2G9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MagicalAV/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.joyoki.MagicalAV;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -317,25 +317,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1FD8A08923006F0500856C47 /* Build configuration list for PBXProject "MagicalAV" */ = {
+		5A1E283D2301617F0001EC42 /* Build configuration list for PBXProject "MagicalAV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1FD8A09E23006F0500856C47 /* Debug */,
-				1FD8A09F23006F0500856C47 /* Release */,
+				5A1E28492301617F0001EC42 /* Debug */,
+				5A1E284A2301617F0001EC42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1FD8A0A023006F0500856C47 /* Build configuration list for PBXNativeTarget "MagicalAV" */ = {
+		5A1E284B2301617F0001EC42 /* Build configuration list for PBXNativeTarget "MagicalAV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1FD8A0A123006F0500856C47 /* Debug */,
-				1FD8A0A223006F0500856C47 /* Release */,
+				5A1E284C2301617F0001EC42 /* Debug */,
+				5A1E284D2301617F0001EC42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1FD8A08623006F0500856C47 /* Project object */;
+	rootObject = 5A1E283A2301617F0001EC42 /* Project object */;
 }

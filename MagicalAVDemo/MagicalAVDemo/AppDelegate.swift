@@ -1,10 +1,9 @@
 //
 //  AppDelegate.swift
-//  MagicalAV
+//  MagicalAVDemo
 //
-//  Created by Joyoki on 2019/8/11.
-//  Copyright © 2019 Joyoki. All rights reserved.
-//
+//  Created by 姜世祺 on 2019/8/12.
+//  Copyright © 2019 che168. All rights reserved.
 
 import UIKit
 
