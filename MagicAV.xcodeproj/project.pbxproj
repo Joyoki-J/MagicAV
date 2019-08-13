@@ -21,9 +21,6 @@
 		5AF70E4F23024AE60060EB4B /* MagicAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF70E2D230247310060EB4B /* MagicAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5AF70E5323024B910060EB4B /* MagicAV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF70E072302463A0060EB4B /* MagicAV.framework */; };
 		5AF70E5423024B910060EB4B /* MagicAV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF70E072302463A0060EB4B /* MagicAV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5AF70E62230251140060EB4B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AF70E61230251140060EB4B /* Info.plist */; };
-		5AF70E64230251250060EB4B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AF70E63230251250060EB4B /* Info.plist */; };
-		5AF70E66230251300060EB4B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AF70E65230251300060EB4B /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -329,7 +326,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AF70E62230251140060EB4B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +333,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AF70E64230251250060EB4B /* Info.plist in Resources */,
 				5AF70E23230247170060EB4B /* LaunchScreen.storyboard in Resources */,
 				5AF70E20230247170060EB4B /* Assets.xcassets in Resources */,
 				5AF70E1E230247150060EB4B /* Main.storyboard in Resources */,
@@ -348,7 +343,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AF70E66230251300060EB4B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
