@@ -14,16 +14,25 @@ import MagicAV
 
 public class MAVRecordViewController: UIViewController {
 
+    private var recorder: MAVRecorder?
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.cyan
         
-        let lab = UILabel()
-        lab.text = MAVVideoInput().test
-        lab.sizeToFit()
-        lab.center = view.center
-        view.addSubview(lab)
+        self.recorder = MAVRecorder(preView: view)
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.recorder?.startCamera()
+    }
+    
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.recorder?.stopCamera()
     }
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

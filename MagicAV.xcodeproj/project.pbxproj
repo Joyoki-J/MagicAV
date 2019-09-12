@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A7824402326476A00A2532A /* MAVQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78243F2326476A00A2532A /* MAVQueue.swift */; };
+		5A7824432326557500A2532A /* MAVPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7824422326557500A2532A /* MAVPrint.swift */; };
+		5A78247223279C5200A2532A /* Array+MAV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78247123279C5200A2532A /* Array+MAV.swift */; };
+		5A7824742327AD5600A2532A /* MAVRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7824732327AD5600A2532A /* MAVRecorder.swift */; };
+		5A7824762327AE2200A2532A /* MAVPreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7824752327AE2200A2532A /* MAVPreView.swift */; };
+		5A78247823287D2B00A2532A /* MAVPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78247723287D2B00A2532A /* MAVPipeline.swift */; };
+		5A78247A23287FCA00A2532A /* MAVRenderExecutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78247923287FCA00A2532A /* MAVRenderExecutable.swift */; };
+		5A78247E2329DF0100A2532A /* MAVShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5A78247D2329DF0100A2532A /* MAVShader.metal */; };
 		5AF70E19230247150060EB4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF70E18230247150060EB4B /* AppDelegate.swift */; };
 		5AF70E1B230247150060EB4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF70E1A230247150060EB4B /* ViewController.swift */; };
 		5AF70E1E230247150060EB4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AF70E1C230247150060EB4B /* Main.storyboard */; };
@@ -21,6 +29,7 @@
 		5AF70E4F23024AE60060EB4B /* MagicAVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF70E2D230247310060EB4B /* MagicAVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5AF70E5323024B910060EB4B /* MagicAV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF70E072302463A0060EB4B /* MagicAV.framework */; };
 		5AF70E5423024B910060EB4B /* MagicAV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF70E072302463A0060EB4B /* MagicAV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5AF70E68230289770060EB4B /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF70E67230289760060EB4B /* Metal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +72,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A78243F2326476A00A2532A /* MAVQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVQueue.swift; sourceTree = "<group>"; };
+		5A7824422326557500A2532A /* MAVPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVPrint.swift; sourceTree = "<group>"; };
+		5A78247123279C5200A2532A /* Array+MAV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+MAV.swift"; sourceTree = "<group>"; };
+		5A7824732327AD5600A2532A /* MAVRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVRecorder.swift; sourceTree = "<group>"; };
+		5A7824752327AE2200A2532A /* MAVPreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVPreView.swift; sourceTree = "<group>"; };
+		5A78247723287D2B00A2532A /* MAVPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVPipeline.swift; sourceTree = "<group>"; };
+		5A78247923287FCA00A2532A /* MAVRenderExecutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVRenderExecutable.swift; sourceTree = "<group>"; };
+		5A78247D2329DF0100A2532A /* MAVShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MAVShader.metal; sourceTree = "<group>"; };
 		5AF70E072302463A0060EB4B /* MagicAV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MagicAV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF70E16230247150060EB4B /* MagicAVDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicAVDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF70E18230247150060EB4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +95,7 @@
 		5AF70E61230251140060EB4B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AF70E63230251250060EB4B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AF70E65230251300060EB4B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AF70E67230289760060EB4B /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AF70E68230289770060EB4B /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +127,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A78243A2326473A00A2532A /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				5A78243F2326476A00A2532A /* MAVQueue.swift */,
+			);
+			path = Queue;
+			sourceTree = "<group>";
+		};
+		5A7824412326555400A2532A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5A7824732327AD5600A2532A /* MAVRecorder.swift */,
+				5A7824752327AE2200A2532A /* MAVPreView.swift */,
+				5A78247723287D2B00A2532A /* MAVPipeline.swift */,
+				5A78247923287FCA00A2532A /* MAVRenderExecutable.swift */,
+				5A78247D2329DF0100A2532A /* MAVShader.metal */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5A78244523272FDC00A2532A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5A7824422326557500A2532A /* MAVPrint.swift */,
+				5A78247123279C5200A2532A /* Array+MAV.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		5AF70DFD2302463A0060EB4B = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +181,9 @@
 			isa = PBXGroup;
 			children = (
 				5AF70E61230251140060EB4B /* Info.plist */,
+				5A78244523272FDC00A2532A /* Utils */,
+				5A7824412326555400A2532A /* Core */,
+				5A78243A2326473A00A2532A /* Queue */,
 				5AF70E42230247F60060EB4B /* Device */,
 				5AF70E41230247A10060EB4B /* Audio */,
 				5AF70E40230247970060EB4B /* Video */,
@@ -165,6 +216,7 @@
 		5AF70E3A2302475C0060EB4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5AF70E67230289760060EB4B /* Metal.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -353,8 +405,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A78247A23287FCA00A2532A /* MAVRenderExecutable.swift in Sources */,
 				5AF70E44230247FD0060EB4B /* MAVDevice.swift in Sources */,
+				5A78247823287D2B00A2532A /* MAVPipeline.swift in Sources */,
+				5A7824762327AE2200A2532A /* MAVPreView.swift in Sources */,
+				5A7824432326557500A2532A /* MAVPrint.swift in Sources */,
 				5AF70E462302482B0060EB4B /* MAVAudioInput.swift in Sources */,
+				5A78247E2329DF0100A2532A /* MAVShader.metal in Sources */,
+				5A7824402326476A00A2532A /* MAVQueue.swift in Sources */,
+				5A7824742327AD5600A2532A /* MAVRecorder.swift in Sources */,
+				5A78247223279C5200A2532A /* Array+MAV.swift in Sources */,
 				5AF70E48230248360060EB4B /* MAVVideoInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,7 +661,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2AG95DX2G9;
 				INFOPLIST_FILE = MagicAVDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -621,7 +681,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2AG95DX2G9;
 				INFOPLIST_FILE = MagicAVDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
