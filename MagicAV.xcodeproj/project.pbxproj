@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A4D3520232F7D460018C67A /* MAVFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D351F232F7D460018C67A /* MAVFilter.swift */; };
+		5A4D35252330BE500018C67A /* MAVBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D35242330BE500018C67A /* MAVBuffer.swift */; };
+		5A4D35272331D2970018C67A /* MAVContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D35262331D2960018C67A /* MAVContext.swift */; };
+		5A4D3529233202260018C67A /* MAVLUTFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D3528233202260018C67A /* MAVLUTFilter.swift */; };
 		5A7824402326476A00A2532A /* MAVQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78243F2326476A00A2532A /* MAVQueue.swift */; };
 		5A7824432326557500A2532A /* MAVPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7824422326557500A2532A /* MAVPrint.swift */; };
 		5A78247223279C5200A2532A /* Array+MAV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78247123279C5200A2532A /* Array+MAV.swift */; };
 		5A7824742327AD5600A2532A /* MAVRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7824732327AD5600A2532A /* MAVRecorder.swift */; };
 		5A7824762327AE2200A2532A /* MAVPreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7824752327AE2200A2532A /* MAVPreView.swift */; };
-		5A78247823287D2B00A2532A /* MAVPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78247723287D2B00A2532A /* MAVPipeline.swift */; };
 		5A78247A23287FCA00A2532A /* MAVRenderExecutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A78247923287FCA00A2532A /* MAVRenderExecutable.swift */; };
 		5A78247E2329DF0100A2532A /* MAVShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5A78247D2329DF0100A2532A /* MAVShader.metal */; };
 		5AF70E19230247150060EB4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF70E18230247150060EB4B /* AppDelegate.swift */; };
@@ -72,12 +75,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A4D351F232F7D460018C67A /* MAVFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVFilter.swift; sourceTree = "<group>"; };
+		5A4D35242330BE500018C67A /* MAVBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVBuffer.swift; sourceTree = "<group>"; };
+		5A4D35262331D2960018C67A /* MAVContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVContext.swift; sourceTree = "<group>"; };
+		5A4D3528233202260018C67A /* MAVLUTFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVLUTFilter.swift; sourceTree = "<group>"; };
 		5A78243F2326476A00A2532A /* MAVQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVQueue.swift; sourceTree = "<group>"; };
 		5A7824422326557500A2532A /* MAVPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVPrint.swift; sourceTree = "<group>"; };
 		5A78247123279C5200A2532A /* Array+MAV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+MAV.swift"; sourceTree = "<group>"; };
 		5A7824732327AD5600A2532A /* MAVRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVRecorder.swift; sourceTree = "<group>"; };
 		5A7824752327AE2200A2532A /* MAVPreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVPreView.swift; sourceTree = "<group>"; };
-		5A78247723287D2B00A2532A /* MAVPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVPipeline.swift; sourceTree = "<group>"; };
 		5A78247923287FCA00A2532A /* MAVRenderExecutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAVRenderExecutable.swift; sourceTree = "<group>"; };
 		5A78247D2329DF0100A2532A /* MAVShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MAVShader.metal; sourceTree = "<group>"; };
 		5AF70E072302463A0060EB4B /* MagicAV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MagicAV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,10 +145,13 @@
 			isa = PBXGroup;
 			children = (
 				5A7824732327AD5600A2532A /* MAVRecorder.swift */,
+				5A4D351F232F7D460018C67A /* MAVFilter.swift */,
+				5A4D3528233202260018C67A /* MAVLUTFilter.swift */,
 				5A7824752327AE2200A2532A /* MAVPreView.swift */,
-				5A78247723287D2B00A2532A /* MAVPipeline.swift */,
 				5A78247923287FCA00A2532A /* MAVRenderExecutable.swift */,
+				5A4D35242330BE500018C67A /* MAVBuffer.swift */,
 				5A78247D2329DF0100A2532A /* MAVShader.metal */,
+				5A4D35262331D2960018C67A /* MAVContext.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -405,9 +414,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4D35252330BE500018C67A /* MAVBuffer.swift in Sources */,
 				5A78247A23287FCA00A2532A /* MAVRenderExecutable.swift in Sources */,
 				5AF70E44230247FD0060EB4B /* MAVDevice.swift in Sources */,
-				5A78247823287D2B00A2532A /* MAVPipeline.swift in Sources */,
+				5A4D35272331D2970018C67A /* MAVContext.swift in Sources */,
+				5A4D3520232F7D460018C67A /* MAVFilter.swift in Sources */,
 				5A7824762327AE2200A2532A /* MAVPreView.swift in Sources */,
 				5A7824432326557500A2532A /* MAVPrint.swift in Sources */,
 				5AF70E462302482B0060EB4B /* MAVAudioInput.swift in Sources */,
@@ -415,6 +426,7 @@
 				5A7824402326476A00A2532A /* MAVQueue.swift in Sources */,
 				5A7824742327AD5600A2532A /* MAVRecorder.swift in Sources */,
 				5A78247223279C5200A2532A /* Array+MAV.swift in Sources */,
+				5A4D3529233202260018C67A /* MAVLUTFilter.swift in Sources */,
 				5AF70E48230248360060EB4B /* MAVVideoInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

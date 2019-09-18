@@ -10,7 +10,7 @@ import Metal
 import MetalKit
 import simd
 
-class MAVPreView: UIView {
+class MAVPreView: UIView, MAVPipeline {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupMetal()
@@ -29,10 +29,9 @@ class MAVPreView: UIView {
     var vertexCoordBuffer: MTLBuffer!
     var textCoordBuffer: MTLBuffer!
     var pipelineState: MTLRenderPipelineState!
-    var commandQueue: MTLCommandQueue!
     var sampler: MTLSamplerState!
+    var commandQueue: MTLCommandQueue!
     var texture: MTLTexture?
-    var textureCache: CVMetalTextureCache!
     var numVertices: Int = 0
     
     func setupMetal() {
@@ -58,8 +57,11 @@ class MAVPreView: UIView {
     }
     
     func setupDevice() -> Bool {
-        self.device = MTLCreateSystemDefaultDevice()
+        
+        self.device = MAVContext.shared.device
         guard self.device != nil else { return false }
+        
+        self.commandQueue = MAVContext.shared.commandQueue
         
         let vertexCoordData: [Float] = [
              1.0, -0.806, 0.0, 1.0,
@@ -84,12 +86,6 @@ class MAVPreView: UIView {
         ]
         self.textCoordBuffer = self.device.makeBuffer(bytes: textCoordData, length: textCoordData.count * MemoryLayout<Float>.size, options: [])
         
-        var cvTextureCache: CVMetalTextureCache?
-        guard CVMetalTextureCacheCreate(kCFAllocatorDefault, nil, device!, nil, &cvTextureCache) == kCVReturnSuccess, let textureCache = cvTextureCache else {
-            return false
-        }
-        self.textureCache = textureCache
-        
         guard let defaultLibrary = try? self.device.makeLibrary(filepath: Bundle.main.privateFrameworksPath! + "/MagicAV.framework/default.metallib") else { return false }
         let vertexFunction = defaultLibrary.makeFunction(name: "vertexShader")
         let fragmentFunction = defaultLibrary.makeFunction(name: "samplingShader")
@@ -109,11 +105,10 @@ class MAVPreView: UIView {
         guard let sampler = self.device.makeSamplerState(descriptor: samplerDescriptor) else { return false }
         self.sampler = sampler
         
-        guard let commandQueue = self.device.makeCommandQueue() else { return false }
-        self.commandQueue = commandQueue;
-        
         return true
     }
+    
+    var nextPipe: MAVPipeline?
     
 }
 
@@ -131,13 +126,14 @@ extension MAVPreView: MTKViewDelegate {
 
 extension MAVPreView: MAVRenderExecutable {
     
-    func render(_ pixelBuffer: CVPixelBuffer) {
+    func render(_ texture: MTLTexture, size: MTLSize) -> MTLTexture {
         if #available(iOS 9.0, *) {
-            self.texture = self.loadTexture(using: pixelBuffer)
+            self.texture = texture
             self.metalView.draw()
         } else {
-            self.render(with: self.loadTexture(using: pixelBuffer))
+            self.render(with: texture)
         }
+        return texture
     }
     
     func render(with texture: MTLTexture?) {
@@ -170,17 +166,6 @@ extension MAVPreView: MAVRenderExecutable {
         commandBuffer.present(drawable)
         
         commandBuffer.commit()
-    }
-   
-    func loadTexture(using pixelBuffer: CVPixelBuffer) -> MTLTexture? {
-        let width = CVPixelBufferGetWidth(pixelBuffer)
-        let height = CVPixelBufferGetHeight(pixelBuffer)
-        var cvTextureOut: CVMetalTexture?
-        CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, self.textureCache, pixelBuffer, nil, .bgra8Unorm, width, height, 0, &cvTextureOut)
-        guard let cvTexture = cvTextureOut, let texture = CVMetalTextureGetTexture(cvTexture) else {
-            return nil
-        }
-        return texture
     }
     
 }

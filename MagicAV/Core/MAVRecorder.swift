@@ -24,11 +24,19 @@ public class MAVRecorder: NSObject {
     private var videoOutput: AVCaptureVideoDataOutput!
     let semaphore: DispatchSemaphore = DispatchSemaphore(value: 3)
     
+    var textureCachePool: [CVMetalTextureCache] = []
+    var textureCaches: [CVMetalTextureCache] = []
+    
+    var pipeline: MAVPipeline?
+    
     public init?(preView: UIView) {
         super.init()
         
+        guard self.createTextureCache(3) else { return nil }
+        
         self.preView = MAVPreView(frame: preView.bounds)
         preView.addSubview(self.preView)
+        self.pipeline = self.createPipeline(with: self.preView)
         
         self.videoDevice = MAVVideoDevice(position: .back)
         guard self.videoDevice.rawDevice != nil else {
@@ -71,6 +79,42 @@ public class MAVRecorder: NSObject {
         self.captureSession.commitConfiguration()
     }
     
+    func createTextureCache(_ num: Int) -> Bool {
+        for _ in 0 ..< num {
+            var cvTextureCache: CVMetalTextureCache?
+            guard CVMetalTextureCacheCreate(kCFAllocatorDefault, nil, MAVContext.shared.device, nil, &cvTextureCache) == kCVReturnSuccess, let textureCache = cvTextureCache else {
+                return false
+            }
+            self.textureCachePool.append(textureCache)
+        }
+        return true
+    }
+    
+    func getTextureCache() -> CVMetalTextureCache? {
+        guard self.textureCachePool.count > 0 else { return nil }
+        let textureCache = self.textureCachePool.first!
+        self.textureCaches.append(textureCache)
+        return textureCache
+    }
+    
+    func freeTextureCache(_ textureCache: CVMetalTextureCache) {
+        if let index = self.textureCaches.firstIndex(of: textureCache) {
+            self.textureCaches.remove(at: index)
+        }
+        if !self.textureCachePool.contains(textureCache) {
+            self.textureCachePool.append(textureCache)
+        }
+    }
+    
+    var lutFilter: MAVLUTFilter?
+    func createPipeline(with preView: MAVPreView) -> MAVPipeline {
+        let lutFilter = MAVLUTFilter()
+        
+        lutFilter >>> preView
+        
+        return lutFilter
+    }
+    
     deinit {
         self.stopCamera()
         self.videoOutput.setSampleBufferDelegate(nil, queue: DispatchQueue.main)
@@ -102,6 +146,10 @@ extension MAVRecorder {
         if self.captureSession.isRunning {
             self.captureSession.stopRunning()
         }
+    }
+    
+    public func setLUTImage(_ image: UIImage?) {
+        self.lutFilter?.lutImage = image
     }
 }
 
@@ -139,18 +187,41 @@ extension MAVRecorder: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard self.captureSession.isRunning,
+              let pipeline = self.pipeline,
+              self.semaphore.wait(timeout: .distantFuture) == .success,
               let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
        
-        CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
-        MAVQueue.runAsynchronouslyOnVideoQueue { [weak self] in
-            defer {
-                CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
-            }
-            if let result = self?.semaphore.wait(timeout: .distantFuture), result == .success {
-                self?.preView.render(pixelBuffer)
-                self?.semaphore.signal()
-            }
+        guard let textureCache = self.getTextureCache() else {
+            self.semaphore.signal()
+            return
         }
+        
+        CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+        
+        let w = CVPixelBufferGetWidth(pixelBuffer)
+        let h = CVPixelBufferGetHeight(pixelBuffer)
+        
+        guard let texture = self.loadTexture(using: pixelBuffer, with: textureCache, width: w, height: h) else {
+            CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+            self.semaphore.signal()
+            return
+        }
+        CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+        
+        MAVQueue.runAsynchronouslyOnVideoQueue { [weak self] in
+            pipeline.pipeline(texture, size: MTLSize(width: w, height: h, depth: 1))
+            self?.freeTextureCache(textureCache)
+            self?.semaphore.signal()
+        }
+    }
+    
+    func loadTexture(using pixelBuffer: CVPixelBuffer, with textureCache: CVMetalTextureCache, width: Int, height: Int) -> MTLTexture? {
+        var cvTextureOut: CVMetalTexture?
+        CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, textureCache, pixelBuffer, nil, .bgra8Unorm, width, height, 0, &cvTextureOut)
+        guard let cvTexture = cvTextureOut, let texture = CVMetalTextureGetTexture(cvTexture) else {
+            return nil
+        }
+        return texture
     }
     
 }

@@ -7,7 +7,3 @@
 //
 
 import CoreVideo
-
-public protocol MAVRenderExecutable {
-    func render(_ pixelBuffer: CVPixelBuffer)
-}
