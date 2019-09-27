@@ -108,11 +108,11 @@ public class MAVRecorder: NSObject {
     
     var lutFilter: MAVLUTFilter?
     func createPipeline(with preView: MAVPreView) -> MAVPipeline {
-        let lutFilter = MAVLUTFilter()
+        self.lutFilter = MAVLUTFilter()
         
-        lutFilter >>> preView
+        self.lutFilter! >>> preView
         
-        return lutFilter
+        return self.lutFilter!
     }
     
     deinit {

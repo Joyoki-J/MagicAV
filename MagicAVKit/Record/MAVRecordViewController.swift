@@ -22,6 +22,23 @@ public class MAVRecordViewController: UIViewController {
         view.backgroundColor = UIColor.cyan
         
         self.recorder = MAVRecorder(preView: view)
+        
+        let button = UIButton()
+        button.setTitle("滤镜-开", for: .normal)
+        button.setTitle("滤镜-关", for: .selected)
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(onClickAction(btn:)), for: .touchUpInside)
+        button.center = view.center
+        view.addSubview(button)
+    }
+    
+    @objc private func onClickAction(btn: UIButton) {
+        if btn.isSelected {
+            self.recorder?.setLUTImage(UIImage(named: "huaijiu"))
+        } else {
+            self.recorder?.setLUTImage(UIImage(named: "qingliang"))
+        }
+        btn.isSelected = !btn.isSelected
     }
     
     public override func viewWillAppear(_ animated: Bool) {

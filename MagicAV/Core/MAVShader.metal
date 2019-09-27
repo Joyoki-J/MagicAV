@@ -34,3 +34,40 @@ samplingShader(MAVRasterizerData input [[stage_in]], // stage_in表示这个数�
 {
     return inputTexture.sample(samplr, input.textureCoordinate);
 }
+
+
+constant half SquareSize = 0.125 - 1.0/512.0;
+constant half StepSize = 0.5/512.0;// 0.5 / 512.0;
+
+// Compute kernel
+kernel void rosyEffect(texture2d<half, access::read> lutTexture  [[ texture(0) ]],
+                       texture2d<half, access::read> inputTexture [[ texture(1) ]],
+                       texture2d<half, access::write> outputTexture [[ texture(2) ]],
+                       uint2 gid [[thread_position_in_grid]])
+{
+    half4 inputColor = inputTexture.read(gid);
+    
+    half blueColor = inputColor.b * 63.0;
+
+    half2 quad1;
+    quad1.y = floor(floor(blueColor) * 0.125);
+    quad1.x = floor(blueColor) - (quad1.y * 8.0);
+
+    half2 quad2;
+    quad2.y = floor(ceil(blueColor) * 0.125);
+    quad2.x = ceil(blueColor) - (quad2.y * 8.0);
+
+    uint2 texPos1;
+    texPos1.x = (quad1.x * 0.125) + StepSize + (SquareSize * inputColor.r);
+    texPos1.y = (quad1.y * 0.125) + StepSize + (SquareSize * inputColor.g);
+
+    uint2 texPos2;
+    texPos2.x = (quad2.x * 0.125) + StepSize + (SquareSize * inputColor.r);
+    texPos2.y = (quad2.y * 0.125) + StepSize + (SquareSize * inputColor.g);
+
+    half4 newColor1 = lutTexture.read(texPos1);
+    half4 newColor2 = lutTexture.read(texPos2);
+
+    half4 newColor = mix(newColor1, newColor2, fract(blueColor));
+    outputTexture.write(mix(inputColor, half4(newColor.rgb, inputColor.w), 0.8), gid);
+}

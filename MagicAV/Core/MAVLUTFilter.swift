@@ -18,14 +18,13 @@ class MAVLUTFilter: MAVFilter {
     override init() {
         super.init()
         
-        let defaultLibrary = MAVContext.shared.device.makeDefaultLibrary()!
-        let kernelFunction = defaultLibrary.makeFunction(name: "rosyEffect")
-        
-        do {
-            self.computePipelineState = try MAVContext.shared.device.makeComputePipelineState(function: kernelFunction!)
-        } catch {
+        guard let defaultLibrary = try? MAVContext.shared.device.makeLibrary(filepath: Bundle.main.privateFrameworksPath! + "/MagicAV.framework/default.metallib"),
+              let kernelFunction = defaultLibrary.makeFunction(name: "rosyEffect"),
+              let computePipelineState = try? MAVContext.shared.device.makeComputePipelineState(function: kernelFunction) else {
             MAVPrint("MAVLUTFilter computePipelineState error")
+            return
         }
+        self.computePipelineState = computePipelineState
     }
     
     var lutImage: UIImage? {
@@ -41,23 +40,18 @@ class MAVLUTFilter: MAVFilter {
             
             let width = cgImage.width
             let height = cgImage.height
-            
-            let bitsPerComponent = cgImage.bitsPerComponent
-            let bitsPerPixel = cgImage.bitsPerPixel
-            
-            let colorSpace = cgImage.colorSpace!
-            let alphaInfo = cgImage.alphaInfo
-            
-            guard let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bitsPerPixel / 8, space: colorSpace, bitmapInfo: alphaInfo.rawValue),
-                  let imageData = context.data else {
-                return nil
+            let dataSize = width * height * 4
+            let data = UnsafeMutablePointer<UInt8>.allocate(capacity: dataSize)
+            let colorSpace = CGColorSpaceCreateDeviceRGB()
+            guard let context = CGContext(data: data, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: colorSpace, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else {
+                    return nil
             }
-            
             context.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
-            
+       
             let texDesc = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: width, height: height, mipmapped: false)
             let texture = MAVContext.shared.device.makeTexture(descriptor: texDesc)
-            texture?.replace(region: MTLRegionMake2D(0, 0, width, height), mipmapLevel: 0, withBytes: imageData, bytesPerRow: 4 * width)
+            texture?.replace(region: MTLRegionMake2D(0, 0, width, height), mipmapLevel: 0, withBytes: context.data!, bytesPerRow: 4 * width)
+            free(data)
             return texture
         }
         return nil
@@ -68,14 +62,20 @@ class MAVLUTFilter: MAVFilter {
         guard let lutTexture = self.lutTexture,
               let commandBuffer = MAVContext.shared.commandQueue.makeCommandBuffer(),
               let commandEncoder = commandBuffer.makeComputeCommandEncoder() else {
-                MAVPrint("Failed to create a Metal command queue.")
                 return texture
+        }
+        
+        let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: size.width, height: size.height, mipmapped: false)
+      
+        guard let outTexture = MAVContext.shared.device.makeTexture(descriptor: descriptor) else {
+            return texture
         }
         
         commandEncoder.label = "Metal LUT Filter"
         commandEncoder.setComputePipelineState(computePipelineState!)
-        commandEncoder.setTexture(texture, index: 0)
-        commandEncoder.setTexture(lutTexture, index: 1)
+        commandEncoder.setTexture(lutTexture, index: 0)
+        commandEncoder.setTexture(texture, index: 1)
+        commandEncoder.setTexture(outTexture, index: 2)
         
         // Set up the thread groups.
         let width = computePipelineState!.threadExecutionWidth
@@ -88,7 +88,7 @@ class MAVLUTFilter: MAVFilter {
         
         commandEncoder.endEncoding()
         commandBuffer.commit()
-        return texture
+        return outTexture
     }
 }
 
