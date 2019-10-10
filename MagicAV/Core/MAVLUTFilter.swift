@@ -14,6 +14,7 @@ import UIKit
 class MAVLUTFilter: MAVFilter {
     
     private var computePipelineState: MTLComputePipelineState?
+    private var intensityBuffer: MTLBuffer!
     
     override init() {
         super.init()
@@ -25,6 +26,7 @@ class MAVLUTFilter: MAVFilter {
             return
         }
         self.computePipelineState = computePipelineState
+        self.intensityBuffer = MAVContext.shared.device.makeBuffer(bytes: &self.intensity, length: MemoryLayout<Float>.size, options: [])
     }
     
     var lutImage: UIImage? {
@@ -32,8 +34,18 @@ class MAVLUTFilter: MAVFilter {
             self.lutTexture = self.createLUTTexture()
         }
     }
-    private var lutTexture: MTLTexture?
+    var intensity: Float = 0.5 {
+        willSet {
+            self.intensity = newValue
+            self.intensity = max(newValue, 0.0)
+            self.intensity = min(newValue, 1.0)
+        }
+        didSet {
+            self.intensityBuffer.contents().copyMemory(from: &self.intensity, byteCount: MemoryLayout<Float>.size)
+        }
+    }
     
+    private var lutTexture: MTLTexture?
     private func createLUTTexture() -> MTLTexture? {
         if let lutImage = self.lutImage,
            let cgImage = lutImage.cgImage {
@@ -47,7 +59,6 @@ class MAVLUTFilter: MAVFilter {
                     return nil
             }
             context.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
-       
             let texDesc = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: width, height: height, mipmapped: false)
             let texture = MAVContext.shared.device.makeTexture(descriptor: texDesc)
             texture?.replace(region: MTLRegionMake2D(0, 0, width, height), mipmapLevel: 0, withBytes: context.data!, bytesPerRow: 4 * width)
@@ -76,8 +87,9 @@ class MAVLUTFilter: MAVFilter {
         commandEncoder.setTexture(lutTexture, index: 0)
         commandEncoder.setTexture(texture, index: 1)
         commandEncoder.setTexture(outTexture, index: 2)
+        commandEncoder.setBuffer(self.intensityBuffer, offset: 0, index: 0)
         
-        // Set up the thread groups.
+//         Set up the thread groups.
         let width = computePipelineState!.threadExecutionWidth
         let height = computePipelineState!.maxTotalThreadsPerThreadgroup / width
         let threadsPerThreadgroup = MTLSizeMake(width, height, 1)

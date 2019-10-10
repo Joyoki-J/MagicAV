@@ -114,6 +114,7 @@ public class MAVRecorder: NSObject {
         
         return self.lutFilter!
     }
+
     
     deinit {
         self.stopCamera()
@@ -150,6 +151,10 @@ extension MAVRecorder {
     
     public func setLUTImage(_ image: UIImage?) {
         self.lutFilter?.lutImage = image
+    }
+    
+    public func setLUTIntensity(_ intensity: Float) {
+        self.lutFilter?.intensity = intensity
     }
 }
 

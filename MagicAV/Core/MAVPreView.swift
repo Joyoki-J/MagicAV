@@ -72,6 +72,7 @@ class MAVPreView: UIView, MAVPipeline {
             -1.0,  0.806, 0.0, 1.0,
              1.0,  0.806, 0.0, 1.0
         ]
+    
         self.vertexCoordBuffer = self.device.makeBuffer(bytes: vertexCoordData, length: vertexCoordData.count * MemoryLayout<Float>.size, options: [])
         self.numVertices = vertexCoordData.count
         
