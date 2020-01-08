@@ -36,9 +36,14 @@ class MAVLUTFilter: MAVFilter {
     }
     var intensity: Float = 0.5 {
         willSet {
-            self.intensity = newValue
-            self.intensity = max(newValue, 0.0)
-            self.intensity = min(newValue, 1.0)
+            switch newValue {
+            case ..<0.0:
+                self.intensity = 0.0
+            case 0.0...1.0:
+                self.intensity = newValue
+            default:
+                self.intensity = 1.0
+            }
         }
         didSet {
             self.intensityBuffer.contents().copyMemory(from: &self.intensity, byteCount: MemoryLayout<Float>.size)
@@ -77,7 +82,7 @@ class MAVLUTFilter: MAVFilter {
         }
         
         let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: size.width, height: size.height, mipmapped: false)
-      
+        descriptor.usage = [.shaderWrite, .shaderRead]
         guard let outTexture = MAVContext.shared.device.makeTexture(descriptor: descriptor) else {
             return texture
         }

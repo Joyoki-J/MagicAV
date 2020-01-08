@@ -21,8 +21,6 @@ class MAVPreView: UIView, MAVPipeline {
         self.setupMetal()
     }
     
-    var metalLayer: CAMetalLayer!
-    @available(iOS 9.0, *)
     lazy var metalView: MTKView! = MTKView(frame: self.bounds)
 
     var device: MTLDevice!
@@ -37,23 +35,13 @@ class MAVPreView: UIView, MAVPipeline {
     func setupMetal() {
         guard self.setupDevice() else { return }
 
-        if #available(iOS 9.0, *) {
-            self.metalView.device = self.device
-            self.metalView.delegate = self
-            self.metalView.isPaused = true
-            self.metalView.enableSetNeedsDisplay = false
-            self.metalView.colorPixelFormat = .bgra8Unorm
-            self.metalView.drawableSize = CGSize(width: 1125, height: 2436)
-            self.addSubview(self.metalView)
-        } else {
-            self.metalLayer = CAMetalLayer()
-            self.metalLayer.device = self.device
-            self.metalLayer.pixelFormat = .bgra8Unorm
-            self.metalLayer.framebufferOnly = true
-            self.metalLayer.frame = self.bounds
-            self.metalLayer.drawableSize = CGSize(width: 1125, height: 2436)
-            self.layer.addSublayer(self.metalLayer)
-        }
+        self.metalView.device = self.device
+        self.metalView.delegate = self
+        self.metalView.isPaused = true
+        self.metalView.enableSetNeedsDisplay = false
+        self.metalView.colorPixelFormat = .bgra8Unorm
+        self.metalView.drawableSize = CGSize(width: 1125, height: 2436)
+        self.addSubview(self.metalView)
     }
     
     func setupDevice() -> Bool {
@@ -113,7 +101,6 @@ class MAVPreView: UIView, MAVPipeline {
     
 }
 
-@available(iOS 9.0, *)
 extension MAVPreView: MTKViewDelegate {
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
@@ -121,39 +108,17 @@ extension MAVPreView: MTKViewDelegate {
     }
     
     func draw(in view: MTKView) {
-        self.render(with: self.texture, drawable: view.currentDrawable)
-    }
-}
 
-extension MAVPreView: MAVRenderExecutable {
-    
-    func render(_ texture: MTLTexture, size: MTLSize) -> MTLTexture {
-        if #available(iOS 9.0, *) {
-            self.texture = texture
-            self.metalView.draw()
-        } else {
-            self.render(with: texture)
-        }
-        return texture
-    }
-    
-    func render(with texture: MTLTexture?) {
-        self.render(with: texture, drawable: self.metalLayer.nextDrawable())
-    }
-    
-    func render(with texture: MTLTexture!, drawable: CAMetalDrawable!) {
-        
         defer { self.texture = nil }
         
-        guard texture != nil, drawable != nil else { return }
+        guard let texture = self.texture,
+            let drawable = view.currentDrawable,
+            let renderPassDescriptor = view.currentRenderPassDescriptor,
+            let commandBuffer = self.commandQueue.makeCommandBuffer() else { return }
         
-        guard let commandBuffer = self.commandQueue.makeCommandBuffer() else { return }
         commandBuffer.label = "MyCommand"
         
-        let renderPassDescriptor = MTLRenderPassDescriptor()
-        renderPassDescriptor.colorAttachments[0].texture = drawable.texture
-        renderPassDescriptor.colorAttachments[0].loadAction = .clear
-        renderPassDescriptor.colorAttachments[0].clearColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
         
         guard let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else { return }
         renderEncoder.label = "MyRenderEncoder"
@@ -167,6 +132,16 @@ extension MAVPreView: MAVRenderExecutable {
         commandBuffer.present(drawable)
         
         commandBuffer.commit()
+        
+    }
+}
+
+extension MAVPreView: MAVRenderExecutable {
+    
+    func render(_ texture: MTLTexture, size: MTLSize) -> MTLTexture {
+        self.texture = texture
+        self.metalView.draw()
+        return texture
     }
     
 }
